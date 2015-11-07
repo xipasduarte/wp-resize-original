@@ -1,0 +1,39 @@
+{
+    "name": "wp-resize-original",
+    "description": "Change an attachment's original size before saving to the database on WordPress.",
+    "type": "wordpress-plugin",
+    "keywords": ["wordpress", "plugin"],
+    "homepage": "http://github.com/xipasduarte/wp-resize-original",
+    "license": "GPL-2.0+",
+    "authors": [
+      {
+          "name": "Pedro Duarte",
+          "email": "xipasduarte@gmail.com",
+          "homepage": "http://xipasduarte.github.com/"
+      }
+    ],
+    "support": {
+        "issues": "http://github.com/xipasduarte/wp-resize-original",
+        "source": "http://github.com/xipasduarte/wp-resize-original"
+    },
+    "autoload": {
+        "psr-4": {
+            "xipasduarte\\WPResizeOriginal\\": "lib/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "xipasduarte\\WPResizeOriginal\\": "tests/"
+        }
+    },
+    "require": {
+        "php": ">=5.5.0",
+        "composer/installers": "~1.0"
+    },
+    "suggest": {
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*@stable"
+    },
+    "suggest": {}
+}
