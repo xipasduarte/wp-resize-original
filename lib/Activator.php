@@ -1,13 +1,11 @@
 <?php
-
 /**
  * Fired during plugin activation
  *
- * @link       http://example.com
  * @since      1.0.0
  *
- * @package    PluginName
- * @subpackage PluginName/includes
+ * @package    wp-resize-original
+ * @subpackage wp-resize-original/includes
  */
 
 namespace xipasduarte\WPResizeOriginal;
@@ -18,16 +16,14 @@ namespace xipasduarte\WPResizeOriginal;
  * This class defines all code necessary to run during the plugin's activation.
  *
  * @since      1.0.0
- * @package    PluginName
- * @subpackage PluginName/includes
- * @author     Your Name <email@example.com>
+ * @package    wp-resize-original
+ * @subpackage wp-resize-original/includes
+ * @author     Pedro Duarte <xipasduarte@gmail.com>
  */
 class Activator {
 
 	/**
-	 * Short Description. (use period)
-	 *
-	 * Long Description.
+	 * Activator.
 	 *
 	 * @since    1.0.0
 	 */

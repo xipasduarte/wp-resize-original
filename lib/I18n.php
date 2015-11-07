@@ -1,16 +1,14 @@
 <?php
-
 /**
  * Define the internationalization functionality
  *
  * Loads and defines the internationalization files for this plugin
  * so that it is ready for translation.
  *
- * @link       http://example.com
  * @since      1.0.0
  *
- * @package    PluginName
- * @subpackage PluginName/includes
+ * @package    wp-resize-original
+ * @subpackage wp-resize-original/includes
  */
 
 namespace xipasduarte\WPResizeOriginal;
@@ -22,9 +20,9 @@ namespace xipasduarte\WPResizeOriginal;
  * so that it is ready for translation.
  *
  * @since      1.0.0
- * @package    PluginName
- * @subpackage PluginName/includes
- * @author     Your Name <email@example.com>
+ * @package    wp-resize-original
+ * @subpackage wp-resize-original/includes
+ * @author     Pedro Duarte <xipasduarte@gmail.com>
  */
 class I18n {
 
@@ -56,7 +54,7 @@ class I18n {
 	 * Set the domain equal to that of the specified domain.
 	 *
 	 * @since    1.0.0
-	 * @param    string    $domain    The domain that represents the locale of this plugin.
+	 * @param    string $domain    The domain that represents the locale of this plugin.
 	 */
 	public function set_domain( $domain ) {
 		$this->domain = $domain;

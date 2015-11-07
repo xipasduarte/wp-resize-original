@@ -1,26 +1,24 @@
 <?php
-
 /**
- * The dashboard-specific functionality of the plugin.
+ * The main functionality of the plugin.
  *
- * @link       http://example.com
  * @since      1.0.0
  *
- * @package    PluginName
- * @subpackage PluginName/admin
+ * @package    wp-resize-original
+ * @subpackage wp-resize-original/admin
  */
 
 namespace xipasduarte\WPResizeOriginal\Admin;
 
 /**
- * The dashboard-specific functionality of the plugin.
+ * The main functionality of the plugin.
  *
- * Defines the plugin name, version, and two examples hooks for how to
- * enqueue the dashboard-specific stylesheet and JavaScript.
+ * Defines all the methods to perform the original image resizing, both to the
+ * user's requested dimensions and on auto mode.
  *
- * @package    PluginName
- * @subpackage PluginName/admin
- * @author     Your Name <email@example.com>
+ * @package    wp-resize-original
+ * @subpackage wp-resize-original/admin
+ * @author     Pedro Duarte <xipasduarte@gmail.com>
  */
 class ResizeOriginal {
 

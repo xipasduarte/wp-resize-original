@@ -1,13 +1,11 @@
 <?php
-
 /**
  * Register all actions and filters for the plugin
  *
- * @link       http://example.com
  * @since      1.0.0
  *
- * @package    PluginName
- * @subpackage PluginName/includes
+ * @package    wp-resize-original
+ * @subpackage wp-resize-original/includes
  */
 
 namespace xipasduarte\WPResizeOriginal;
@@ -19,9 +17,9 @@ namespace xipasduarte\WPResizeOriginal;
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    PluginName
- * @subpackage PluginName/includes
- * @author     Your Name <email@example.com>
+ * @package    wp-resize-original
+ * @subpackage wp-resize-original/includes
+ * @author     Pedro Duarte <xipasduarte@gmail.com>
  */
 class Loader {
 
