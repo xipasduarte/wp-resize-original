@@ -14,7 +14,7 @@
  * @wordpress-plugin
  * Plugin Name:       WordPress Resize Original
  * Plugin URI:        http://github.com/xipasduarte/wp-resize-original
- * Description:       Change an attachment's original size before saving to datase on WordPress.
+ * Description:       Change an attachment's original size before saving to the database on WordPress.
  * Version:           1.0.0
  * Author:            Pedro Duarte
  * Author URI:        http://xipasduarte.github.com/
