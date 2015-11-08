@@ -109,7 +109,7 @@ class ResizeOriginal {
 		$image = \wp_get_image_editor( $file );
 
 		if ( ! \is_wp_error( $image ) ) {
-			$image->resize( $dimensions[0], $dimensions[1] );
+			$image->resize( $dimensions[0], $dimensions[1], false );
 			$image->save( $file );
 		}
 	}
