@@ -28,7 +28,6 @@ class Deactivator {
 	 * @since    1.0.0
 	 */
 	public static function deactivate() {
-
+		// Add the unregister_settings functions needed.
 	}
-
 }

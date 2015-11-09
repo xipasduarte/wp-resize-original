@@ -96,9 +96,14 @@ class Plugin {
 	private function define_admin_hooks() {
 
 		$plugin_admin = new Admin( $this );
+		$plugin_settings = new Admin\Settings( $this );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+
+		if ( \is_admin() ) {
+			$this->loader->add_action( 'admin_init', $plugin_settings, 'register_settings' );
+		}
 
 	}
 
