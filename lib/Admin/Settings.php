@@ -53,14 +53,14 @@ class Settings {
 
 		\add_settings_section(
 			'manual_settings',
-			__( 'WP Resize Original Plugin', $this->plugin->get_plugin_name() ),
+			\__( 'WP Resize Original Plugin', $this->plugin->get_plugin_name() ),
 			[ $this, 'manual_settings_callback' ],
 			'media'
 		);
 
 		\add_settings_field(
 			'dimensions',
-			__( 'New dimensions', $this->plugin->get_plugin_name() ),
+			\__( 'Manual Mode', $this->plugin->get_plugin_name() ),
 			[ $this, 'dimensions_callback' ],
 			'media',
 			'manual_settings'
@@ -83,7 +83,10 @@ class Settings {
 	 * @since	1.0.0
 	 */
 	public function manual_settings_callback() {
-		\_e( 'To use the manual mode all of the settings below need to be filled in.', $this->plugin->get_plugin_name() );
+		printf( '<p>%s</p><p>%s</p>',
+			\__( 'The automatic mode is enabled by default. It works by determining the minimum required size to allow WordPress to generate all your defined thumbnail sizes.<br>If you want more control use the manual mode.', $this->plugin->get_plugin_name() ),
+			\__( 'To use the manual mode all of the settings below need to be filled in.', $this->plugin->get_plugin_name() )
+		);
 	}
 
 	/**
@@ -92,22 +95,24 @@ class Settings {
 	 * @since	1.0.0
 	 */
 	public function dimensions_callback() {
+		// Width field.
 		printf(
-			'<label>%s&nbsp;<input type="text" id="width" name="wp_resize_original[width]" value="%s" /></label>',
-			__( 'Width', $this->plugin->get_plugin_name() ),
+			'<label>%s&nbsp;<input type="number" id="width" class="small-text" name="wp_resize_original[width]" value="%s" /></label>',
+			\__( 'Width', $this->plugin->get_plugin_name() ),
 			isset( $this->options['width'] ) ? esc_attr( $this->options['width'] ) : ''
 		);
 
+		// Height field.
 		printf(
-			'&nbsp;<label>%s&nbsp;<input type="text" id="width" name="wp_resize_original[height]" value="%s" /></label>',
-			__( 'Height', $this->plugin->get_plugin_name() ),
+			'&nbsp;<label>%s&nbsp;<input type="number" id="width" class="small-text" name="wp_resize_original[height]" value="%s" /></label>',
+			\__( 'Height', $this->plugin->get_plugin_name() ),
 			isset( $this->options['height'] ) ? esc_attr( $this->options['height'] ) : ''
 		);
 
 		printf(
 			'<p>%s<br>%s</p>',
-			__( 'Specify the desired dimensions to which all new uploads will be resized before thumbnail generation.', $this->plugin->get_plugin_name() ),
-			__( 'Images with dimensions lower than the ones specified are not resized.', $this->plugin->get_plugin_name() )
+			\__( 'Specify the desired dimensions to which all new uploads will be resized before thumbnail generation.', $this->plugin->get_plugin_name() ),
+			\__( 'Images with initial dimensions lower than the ones specified are not resized.', $this->plugin->get_plugin_name() )
 		);
 	}
 }
