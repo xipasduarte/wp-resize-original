@@ -49,7 +49,7 @@ class Settings {
 	 */
 	public function register_settings() {
 
-		\register_setting( 'wp_resize_original', 'wp_resize_original', [ $this, 'sanitize_options' ] );
+		\register_setting( 'media', 'wp_resize_original', [ $this, 'sanitize_options' ] );
 
 		\add_settings_section(
 			'manual_settings',
@@ -59,7 +59,7 @@ class Settings {
 		);
 
 		\add_settings_field(
-			'dimensions',
+			'wp_resize_original',
 			\__( 'Manual Mode', $this->plugin->get_plugin_name() ),
 			[ $this, 'dimensions_callback' ],
 			'media',
@@ -74,6 +74,31 @@ class Settings {
 	 * @param array $options Options to sanitize.
 	 **/
 	public function sanitize_options( $options ) {
+		// TODO: Needs work for more simplicity.
+		if ( ! empty( $options['width'] ) && empty( $options['height'] )
+		|| ! empty( $options['height'] ) && empty( $options['width'] ) ) {
+			$message = __( 'You must provide a value for Width and Height on WP Resize Original.', $this->plugin->get_plugin_name() );
+		} else if ( '0' === $options['width'] || '0' === $options['height'] ) {
+			$message = \__( 'The dimensions for WP Resize Original can not be 0 (zero)', $this->plugin->get_plugin_name() );
+		} else {
+			$message = '';
+		}
+
+		if ( ! empty( $message ) ) {
+			add_settings_error(
+				'wp_resize_original',
+				esc_attr( 'settings_updated' ),
+				$message,
+				'error'
+			);
+
+			$options['width'] = '';
+			$options['height'] = '';
+		}
+
+		$options['width'] = absint( $options['width'] ) === 0 ? '' : absint( $options['width'] );
+		$options['height'] = absint( $options['height'] ) === 0 ? '' : absint( $options['height'] );
+
 		return $options;
 	}
 
@@ -95,18 +120,18 @@ class Settings {
 	 * @since	1.0.0
 	 */
 	public function dimensions_callback() {
+		$options = \get_option( 'wp_resize_original' );
 		// Width field.
 		printf(
-			'<label>%s&nbsp;<input type="number" id="width" class="small-text" name="wp_resize_original[width]" value="%s" /></label>',
+			'<label>%s&nbsp;<input type="number" id="width" class="small-text" name="wp_resize_original[width]" step="1" min="0" value="%s" /></label>',
 			\__( 'Width', $this->plugin->get_plugin_name() ),
-			isset( $this->options['width'] ) ? esc_attr( $this->options['width'] ) : ''
+			$options && isset( $options['width'] ) ? $options['width'] : ''
 		);
 
-		// Height field.
 		printf(
-			'&nbsp;<label>%s&nbsp;<input type="number" id="width" class="small-text" name="wp_resize_original[height]" value="%s" /></label>',
+			'<label>%s&nbsp;<input type="number" id="height" class="small-text" name="wp_resize_original[height]" step="1" min="0" value="%s" /></label>',
 			\__( 'Height', $this->plugin->get_plugin_name() ),
-			isset( $this->options['height'] ) ? esc_attr( $this->options['height'] ) : ''
+			$options && isset( $options['height'] ) ? $options['height'] : ''
 		);
 
 		printf(
