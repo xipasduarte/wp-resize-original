@@ -79,19 +79,24 @@ class ResizeOriginal {
 	 * @return array  The resize dimensions.
 	 **/
 	private function resize_dimensions() {
+		// Get the custom option with values, if set.
+		$dimensions = \get_option( 'wp_resize_original' );
 
 		if ( \has_filter( 'wp_resize_original_dimensions' ) ) {
 
 			// Grab the maximum dimensions set by the user.
 			return \apply_filters( 'wp_resize_original_dimensions', array() );
 
-		} elseif ( \has_filter( 'wp_resize_original_auto' ) && \apply_filters( 'wp_resize_original_auto', false ) ) {
+		} elseif ( $dimensions && 0 !== $dimensions['width'] * $dimensions['height'] ) {
+
+			// Return the user defined dimensions from Settings>Media.
+			return [ $dimensions['width'], $dimensions['height'] ];
+
+		} else {
 
 			// Determine maximum dimensions.
 			return $this->auto_dimensions();
 
-		} else {
-			return array();
 		}
 	}
 
