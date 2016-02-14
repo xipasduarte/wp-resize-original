@@ -76,10 +76,16 @@ class Settings {
 	public function sanitize_options( $options ) {
 		// TODO: Needs work for more simplicity.
 		if ( ! empty( $options['width'] ) && empty( $options['height'] )
-		|| ! empty( $options['height'] ) && empty( $options['width'] ) ) {
-			$message = __( 'You must provide a value for Width and Height on WP Resize Original.', $this->plugin->get_plugin_name() );
+			|| ! empty( $options['height'] ) && empty( $options['width'] ) ) {
+			$message = \__(
+				'You must provide a value for Width and Height on WP Resize Original.',
+				$this->plugin->get_plugin_name()
+			);
 		} else if ( '0' === $options['width'] || '0' === $options['height'] ) {
-			$message = \__( 'The dimensions for WP Resize Original can not be 0 (zero)', $this->plugin->get_plugin_name() );
+			$message = \__(
+				'The dimensions for WP Resize Original must all be different from 0 (zero)',
+				$this->plugin->get_plugin_name()
+			);
 		} else {
 			$message = '';
 		}
@@ -92,11 +98,11 @@ class Settings {
 				'error'
 			);
 
-			$options['width'] = '';
+			$options['width']  = '';
 			$options['height'] = '';
 		}
 
-		$options['width'] = absint( $options['width'] ) === 0 ? '' : absint( $options['width'] );
+		$options['width']  = absint( $options['width'] ) === 0 ? '' : absint( $options['width'] );
 		$options['height'] = absint( $options['height'] ) === 0 ? '' : absint( $options['height'] );
 
 		return $options;
@@ -108,7 +114,8 @@ class Settings {
 	 * @since	1.0.0
 	 */
 	public function manual_settings_callback() {
-		printf( '<p>%s</p><p>%s</p>',
+		printf(
+			'<p>%s</p><p>%s</p>',
 			\__( 'The automatic mode is enabled by default. It works by determining the minimum required size to allow WordPress to generate all your defined thumbnail sizes.<br>If you want more control use the manual mode.', $this->plugin->get_plugin_name() ),
 			\__( 'To use the manual mode all of the settings below need to be filled in.', $this->plugin->get_plugin_name() )
 		);

@@ -91,6 +91,7 @@ class ResizeOriginal {
 
 			// Return the user defined dimensions from Settings>Media.
 			return [ $dimensions['width'], $dimensions['height'] ];
+
 		} else {
 
 			// Determine maximum dimensions.
